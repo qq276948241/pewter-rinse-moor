@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/google/uuid v1.6.0
 	github.com/jinzhu/now v1.1.5
-	github.com/lib/pq v1.10.9
+	github.com/lib/pq v1.12.3
 	github.com/stretchr/testify v1.11.1
 	gorm.io/driver/gaussdb v0.1.0
 	gorm.io/driver/mysql v1.6.0
