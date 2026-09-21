@@ -30,7 +30,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: go mod package cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -73,7 +73,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: go mod package cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -116,7 +116,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: go mod package cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -159,7 +159,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: go mod package cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -200,7 +200,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: go mod package cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -233,7 +233,7 @@ jobs:
 
 
       - name: go mod package cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
@@ -301,7 +301,7 @@ jobs:
           exit 0
 
       - name: go mod package cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('tests/go.mod') }}
