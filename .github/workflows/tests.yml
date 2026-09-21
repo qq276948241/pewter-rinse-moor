@@ -27,7 +27,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: go mod package cache
       uses: actions/cache@v4
@@ -70,7 +70,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: go mod package cache
       uses: actions/cache@v4
@@ -113,7 +113,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: go mod package cache
         uses: actions/cache@v4
@@ -156,7 +156,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: go mod package cache
       uses: actions/cache@v4
@@ -197,7 +197,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: go mod package cache
       uses: actions/cache@v4
@@ -229,7 +229,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
 
       - name: go mod package cache
@@ -266,7 +266,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Waiting for GaussDB to be ready
         run: |
