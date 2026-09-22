@@ -65,6 +65,8 @@ type Field struct {
 	Creatable              bool
 	Updatable              bool
 	Readable               bool
+	ReadOnly               bool
+	WriteOnly              bool
 	AutoCreateTime         TimeType
 	AutoUpdateTime         TimeType
 	HasDefaultValue        bool
@@ -382,6 +384,18 @@ func (schema *Schema) ParseField(fieldStruct reflect.StructField) *Field {
 			if !strings.Contains(v, "update") {
 				field.Updatable = false
 			}
+		}
+	}
+
+	// field permission: `gorm:"perm:ro"` marks the field read-only (writes are
+	// blocked, exports allowed), `gorm:"perm:wo"` marks it write-only (writes
+	// are accepted, exports never include it)
+	if v, ok := field.TagSettings["PERM"]; ok {
+		switch strings.ToLower(strings.TrimSpace(v)) {
+		case "ro", "readonly", "read_only", "read-only":
+			field.ReadOnly = true
+		case "wo", "writeonly", "write_only", "write-only":
+			field.WriteOnly = true
 		}
 	}
 

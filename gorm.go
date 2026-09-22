@@ -33,6 +33,8 @@ type Config struct {
 	FullSaveAssociations bool
 	// Logger
 	Logger logger.Interface
+	// Audit collects slow query, permission and savepoint audit events when set
+	Audit *AuditLog
 	// NowFunc the function to be used when creating a new timestamp.
 	// It defaults to time.Now().Local(), so return values in the desired
 	// location when overriding it for timezone-sensitive applications.
@@ -218,6 +220,8 @@ func Open(dialector Dialector, opts ...Option) (db *DB, err error) {
 			skipAfterInitialize = true
 			return
 		}
+
+		registerFieldPermCallbacks(db)
 
 		if config.TranslateError {
 			if _, ok := db.Dialector.(ErrorTranslator); !ok {

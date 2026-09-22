@@ -751,6 +751,7 @@ func (db *DB) SavePoint(name string) *DB {
 		if isPreparedStmtTx {
 			db.Statement.ConnPool = preparedStmtTx
 		}
+		db.recordAudit(AuditEvent{Kind: AuditSavepoint, SQL: "SAVEPOINT " + name, Err: db.Error})
 	} else {
 		db.AddError(ErrUnsupportedDriver)
 	}
@@ -774,6 +775,7 @@ func (db *DB) RollbackTo(name string) *DB {
 		if isPreparedStmtTx {
 			db.Statement.ConnPool = preparedStmtTx
 		}
+		db.recordAudit(AuditEvent{Kind: AuditSavepointRollback, SQL: "ROLLBACK TO SAVEPOINT " + name, Err: db.Error})
 	} else {
 		db.AddError(ErrUnsupportedDriver)
 	}

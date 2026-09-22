@@ -15,6 +15,9 @@ The fantastic ORM library for Golang, aims to be developer friendly.
 * Eager loading with `Preload`, `Joins`
 * Transactions, Nested Transactions, Save Point, RollbackTo to Saved Point
 * Context, Prepared Statement Mode, DryRun Mode
+* Field Permissions (read-only/write-only via `gorm:"perm:ro|wo"`, session tightening with `RestrictFields`)
+* Hook Chains (`OnHook`: stackable before/after hooks with registration-order execution and fail-fast)
+* Slow Query Audit (`Config.Audit`: threshold-based slow query log with params, per-session pause/resume, permission & savepoint trails)
 * Batch Insert, FindInBatches, Find To Map
 * SQL Builder, Upsert, Locking, Optimizer/Index/Comment Hints, NamedArg, Search/Update/Create with SQL Expr
 * Composite Primary Key

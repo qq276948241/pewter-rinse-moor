@@ -144,6 +144,18 @@ func (p *processor) Execute(db *DB) *DB {
 			}
 			return db.Dialector.Explain(sql, vars...), db.RowsAffected
 		}, db.Error)
+
+		if db.Config.Audit != nil {
+			if elapsed := time.Since(curTime); elapsed >= db.Config.Audit.Threshold {
+				db.recordAudit(AuditEvent{
+					Kind:    AuditSlowQuery,
+					SQL:     stmt.SQL.String(),
+					Params:  append([]interface{}(nil), stmt.Vars...),
+					Elapsed: elapsed,
+					Err:     db.Error,
+				})
+			}
+		}
 	}
 
 	if !stmt.DB.DryRun {
